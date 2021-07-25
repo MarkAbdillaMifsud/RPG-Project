@@ -5,6 +5,7 @@ namespace RPG.Combat {
     public class Fighter : MonoBehaviour {
 
         [SerializeField] float weaponRange = 2f;
+
         Mover mover;
         Transform target;
 
@@ -31,6 +32,11 @@ namespace RPG.Combat {
         public void Attack(CombatTarget combatTarget)
         {
             target = combatTarget.transform;
+        }
+
+        public void Cancel()
+        {
+            target = null;
         }
     }
 }

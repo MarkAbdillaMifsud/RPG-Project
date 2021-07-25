@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using RPG.Combat;
 
 namespace RPG.Movement {
     public class Mover : MonoBehaviour {
@@ -12,6 +13,12 @@ namespace RPG.Movement {
 
         private void Update() {
             UpdateAnimator();
+        }
+
+        public void StartMoveAction(Vector3 destination)
+        {
+            GetComponent<Fighter>().Cancel();
+            MoveTo(destination);
         }
         
         public void MoveTo(Vector3 destination) {
