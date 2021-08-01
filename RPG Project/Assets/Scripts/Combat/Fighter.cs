@@ -3,7 +3,7 @@ using RPG.Movement;
 using RPG.Core;
 
 namespace RPG.Combat {
-    public class Fighter : MonoBehaviour {
+    public class Fighter : MonoBehaviour, IAction {
 
         [SerializeField] float weaponRange = 2f;
 
@@ -28,7 +28,7 @@ namespace RPG.Combat {
             mover.MoveTo(target.position);
             if (Vector3.Distance(transform.position, target.position) <= weaponRange)
             {
-                mover.Stop();
+                mover.Cancel();
             }
         }
 
