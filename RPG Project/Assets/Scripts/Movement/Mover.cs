@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Combat;
+using RPG.Core;
 
 namespace RPG.Movement {
     public class Mover : MonoBehaviour {
 
         NavMeshAgent navMeshAgent;
+        ActionScheduler actionScheduler;
 
         private void Start() {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            actionScheduler = GetComponent<ActionScheduler>();
         }
 
         private void Update() {
@@ -17,6 +20,7 @@ namespace RPG.Movement {
 
         public void StartMoveAction(Vector3 destination)
         {
+            actionScheduler.StartAction(this);
             GetComponent<Fighter>().Cancel();
             MoveTo(destination);
         }
