@@ -8,6 +8,11 @@ namespace RPG.Combat
 
         bool isDead = false;   
 
+        public bool IsDead()
+        {
+            return isDead;
+        }
+
         public void TakeDamage(float damage)
         {
             health = Mathf.Max(health - damage, 0); //take either the value of health - damage, or 0 is the previous falls into the negative

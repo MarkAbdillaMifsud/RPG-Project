@@ -11,7 +11,8 @@ namespace RPG.Combat {
 
         Mover mover;
         ActionScheduler actionScheduler;
-        Transform target;
+        Health target;
+
         float timeSinceLastAttack;
 
         private void Start() {
@@ -21,7 +22,12 @@ namespace RPG.Combat {
 
         private void Update() {
             timeSinceLastAttack += Time.deltaTime;
-            if (target != null)
+
+            if (target == null) return;
+
+            if (target.IsDead()) return;
+
+            else
             {
                 MoveToTarget();   
             }
@@ -29,8 +35,8 @@ namespace RPG.Combat {
 
         private void MoveToTarget()
         {
-            mover.MoveTo(target.position);
-            if (Vector3.Distance(transform.position, target.position) <= weaponRange)
+            mover.MoveTo(target.transform.position);
+            if (Vector3.Distance(transform.position, target.transform.position) <= weaponRange)
             {
                 mover.Cancel();
                 AttackBehaviour();
@@ -49,19 +55,19 @@ namespace RPG.Combat {
         public void Attack(CombatTarget combatTarget)
         {
             actionScheduler.StartAction(this);
-            target = combatTarget.transform;
+            target = combatTarget.GetComponent<Health>();
         }
 
         public void Cancel()
         {
+            GetComponent<Animator>().SetTrigger("stopAttack");
             target = null;
         }
 
         //animation event
         void Hit()
         {
-            Health healthComponent = target.GetComponent<Health>();
-            healthComponent.TakeDamage(weaponDamage);
+            target.TakeDamage(weaponDamage);
         }
     }
 }
