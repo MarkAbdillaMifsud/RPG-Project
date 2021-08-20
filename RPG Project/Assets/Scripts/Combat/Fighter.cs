@@ -43,6 +43,17 @@ namespace RPG.Combat {
             }
         }
 
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            if (combatTarget == null) 
+            {
+                return false;
+            }
+            
+            Health target = combatTarget.GetComponent<Health>();
+            return target != null && !target.IsDead();
+        }
+
         private void AttackBehaviour()
         {
             transform.LookAt(target.transform.position);
