@@ -39,6 +39,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+--- !u!114 &3693553241092746689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6125463598404681962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f48ad32a79bc90409b140409d5f8943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseDistance: 5
 --- !u!1001 &313955969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106,7 +119,7 @@ PrefabInstance:
     - target: {fileID: 732919773975101600, guid: 42d180d3035074a409ca289228348361,
         type: 3}
       propertyPath: m_Name
-      value: Enemy 1
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2584404533108267116, guid: 42d180d3035074a409ca289228348361,
         type: 3}
