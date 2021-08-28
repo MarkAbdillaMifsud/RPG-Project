@@ -13,7 +13,7 @@ namespace RPG.Combat {
         ActionScheduler actionScheduler;
         Health target;
 
-        float timeSinceLastAttack;
+        float timeSinceLastAttack = Mathf.Infinity;
 
         private void Start() {
             mover = GetComponent<Mover>();
